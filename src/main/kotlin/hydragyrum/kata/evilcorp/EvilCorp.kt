@@ -15,7 +15,7 @@ class EvilCorp(
         val censored = text.split(" ")
             .joinToString(" ") {
                 val word = removePunctuation(it)
-                if (replacementMap.any { (key, _) -> word.toLowerCase().contains(key) }) {
+                if (replacementMap.any { (key, _) -> word.toLowerCase().startsWith(key) }) {
                     (replacementMap[word.toLowerCase()] ?: "X".repeat(word.length)) + getPunctuation(it)
                 } else {
                     it
